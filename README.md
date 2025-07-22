@@ -26,3 +26,7 @@ This project integrates [Wagtail CMS](https://wagtail.org/) with [Keycloak](http
 - **Keycloak**
 - **Requests (Python HTTP library)**
 
+
+[Wagtail Documentation](https://docs.wagtail.org/en/v7.0.1/) 
+Topics, references, & how-tos
+
