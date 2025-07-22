@@ -5,6 +5,10 @@ This project integrates [Wagtail CMS](https://wagtail.org/) with [Keycloak](http
 > ✅ Users authenticate through Keycloak and are redirected back to Wagtail.  
 > ✅ Wagtail admin session auto-invalidates if the Keycloak session is killed/expired.
 
+
+[Wagtail Documentation](https://docs.wagtail.org/en/v7.0.1/) 
+Topics, references, & how-tos
+
 ---
 
 ## 📦 Features
@@ -27,6 +31,5 @@ This project integrates [Wagtail CMS](https://wagtail.org/) with [Keycloak](http
 - **Requests (Python HTTP library)**
 
 
-[Wagtail Documentation](https://docs.wagtail.org/en/v7.0.1/) 
-Topics, references, & how-tos
+
 
