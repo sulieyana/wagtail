@@ -102,3 +102,10 @@ urlpatterns = urlpatterns + [
     # of your site, rather than the site root:
     #    path("pages/", include(wagtail_urls)),
 ]
+
+
+if settings.FORCE_SCRIPT_NAME:
+    from django.urls import get_script_prefix
+    from django.urls import URLResolver
+    urlpatterns = [URLResolver(settings.FORCE_SCRIPT_NAME.strip('/'), urlpatterns)]
+    

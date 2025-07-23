@@ -17,6 +17,9 @@ PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
+
+FORCE_SCRIPT_NAME = '/wagtail'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -79,12 +82,13 @@ LOGIN_URL = '/oidc/authenticate/'
 LOGIN_REDIRECT_URL = '/admin/'
 
 OIDC_RP_CLIENT_ID = 'cms-wagtail'
-OIDC_RP_CLIENT_SECRET = 'T9uW1jHi1JXV08I0r1qRyKeul1nQjqKM'
+OIDC_RP_CLIENT_SECRET = 'N9SCHXszr1DqMrT0uyhTLEBTgr1gLoUt'
 
 OIDC_RP_SIGN_ALGO = 'RS256'
 
 # OIDC_OP_BASE_URL = 'http://10.1.64.192:32730/realms/mtssb'
-OIDC_OP_BASE_URL = "http://10.1.64.192:32080/auth/realms/mtssb" # Your Keycloak Realm URL
+# OIDC_OP_BASE_URL = "http://10.1.64.192:32080/auth/realms/mtssb" # Your Keycloak Realm URL
+OIDC_OP_BASE_URL = "http://10.1.75.92/auth/realms/mtssb" # Your Keycloak Realm URL
 OIDC_OP_AUTHORIZATION_ENDPOINT = OIDC_OP_BASE_URL + '/protocol/openid-connect/auth'
 OIDC_OP_TOKEN_ENDPOINT = OIDC_OP_BASE_URL + '/protocol/openid-connect/token'
 OIDC_OP_USER_ENDPOINT = OIDC_OP_BASE_URL + '/protocol/openid-connect/userinfo'
