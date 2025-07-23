@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
 
-FORCE_SCRIPT_NAME = '/wagtail'
+FORCE_SCRIPT_NAME = ''
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
