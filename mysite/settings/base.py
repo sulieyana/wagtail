@@ -21,7 +21,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 FORCE_SCRIPT_NAME = '/wagtail'
 USE_X_FORWARDED_HOST = True
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -237,11 +236,18 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "static"),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATIC_URL = FORCE_SCRIPT_NAME + "/static/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = FORCE_SCRIPT_NAME + "/media/"
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_URL = "static/"
+
+# MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# MEDIA_URL = "media/"
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default storage settings, with the staticfiles storage updated.
 # See https://docs.djangoproject.com/en/5.2/ref/settings/#std-setting-STORAGES
