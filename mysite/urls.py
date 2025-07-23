@@ -106,8 +106,3 @@ urlpatterns = urlpatterns + [
 ]
 
 
-if settings.FORCE_SCRIPT_NAME:
-    from django.urls import include
-    urlpatterns = [
-        path(settings.FORCE_SCRIPT_NAME.strip('/') + '/', include((urlpatterns, 'project')))
-    ]
