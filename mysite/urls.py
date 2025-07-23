@@ -29,6 +29,8 @@ from django.urls import path
 
 from home.views import CustomOIDCCallbackView
 
+from django.urls import URLResolver, URLPattern
+
 # from home.views import CustomOIDCCallbackView, CustomOIDCLoginView
 
 schema_view = get_schema_view(
@@ -105,7 +107,7 @@ urlpatterns = urlpatterns + [
 
 
 if settings.FORCE_SCRIPT_NAME:
-    from django.urls import get_script_prefix
-    from django.urls import URLResolver
-    urlpatterns = [URLResolver(settings.FORCE_SCRIPT_NAME.strip('/'), urlpatterns)]
-    
+    from django.urls import include
+    urlpatterns = [
+        path(settings.FORCE_SCRIPT_NAME.strip('/') + '/', include((urlpatterns, 'project')))
+    ]
