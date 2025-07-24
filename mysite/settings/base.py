@@ -20,6 +20,10 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 FORCE_SCRIPT_NAME = ''
 
+STATIC_URL = "/wagtail/static/"
+# STATIC_ROOT = BASE_DIR / "static_root"
+STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -235,8 +239,8 @@ STATICFILES_DIRS = [
     os.path.join(PROJECT_DIR, "static"),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATIC_URL = "static/"
+# STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# STATIC_URL = "static/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "media/"
