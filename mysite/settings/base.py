@@ -16,11 +16,11 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+# FORCE_SCRIPT_NAME = '/cms'
+STATIC_URL = '/static/'
 
+URL_PREFIX = 'cms'
 
-FORCE_SCRIPT_NAME = ''
-
-STATIC_URL = "/wagtail/static/"
 # STATIC_ROOT = BASE_DIR / "static_root"
 STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
 
@@ -82,8 +82,10 @@ CSRF_TRUSTED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 
-LOGIN_URL = '/oidc/authenticate/'
-LOGIN_REDIRECT_URL = '/admin/'
+LOGIN_URL = '/cms/oidc/authenticate/'  # This must match your OIDC route
+ # Where to go after login
+WAGTAIL_FRONTEND_LOGIN_URL = LOGIN_URL  # Ensures Wagtail uses it too
+LOGIN_REDIRECT_URL = '/cms/admin/'    
 
 OIDC_RP_CLIENT_ID = 'cms-wagtail'
 OIDC_RP_CLIENT_SECRET = 'N9SCHXszr1DqMrT0uyhTLEBTgr1gLoUt'
@@ -103,8 +105,8 @@ OIDC_OP_LOGOUT_ENDPOINT = OIDC_OP_BASE_URL + '/protocol/openid-connect/logout'
 # http://127.0.0.1:8000/oidc/callback/
 
 
-OIDC_LOGOUT_REDIRECT_URL = "http://127.0.0.1:8000/admin/"  # Or wherever you want after logout
-LOGOUT_REDIRECT_URL = "/oidc/logout/"  # Calls the OIDC logout view
+OIDC_LOGOUT_REDIRECT_URL = "http://127.0.0.1:8000/cms/admin/"  # Or wherever you want after logout
+LOGOUT_REDIRECT_URL = "/cms/oidc/logout/"  # Calls the OIDC logout view
 
 
 
@@ -112,7 +114,6 @@ LOGOUT_REDIRECT_URL = "/oidc/logout/"  # Calls the OIDC logout view
 OIDC_STORE_ACCESS_TOKEN = True
 OIDC_STORE_ID_TOKEN = True
 
-WAGTAIL_FRONTEND_LOGIN_URL = LOGIN_URL
 OIDC_AUTHENTICATION_CALLBACK_VIEW_NAME = "oidc_callback"
 
 MIDDLEWARE = [

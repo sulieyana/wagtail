@@ -34,7 +34,9 @@ class CustomOIDCCallbackView(OIDCAuthenticationCallbackView):
                 print("❌ Failed to decode token:", str(e))
         
         return response
-    
+
+def wagtail_admin_redirect_to_oidc(request):
+    return redirect(settings.LOGIN_URL)  
 
 def force_token_expired(request):
     request.session["oidc_access_token_exp"] = 0  # Set to past timestamp

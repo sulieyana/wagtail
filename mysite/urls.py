@@ -2,13 +2,15 @@ from django.conf import settings
 from django.urls import include, path
 from django.contrib import admin
 
+
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
-from home.views import custom_admin_logout, custom_logout, force_token_expired, remote_logout
+from home.views import custom_admin_logout, custom_logout, force_token_expired, remote_logout,wagtail_admin_redirect_to_oidc
+
 
 # from django.contrib.auth.views import LogoutView
 # from django.shortcuts import redirect
@@ -65,9 +67,15 @@ urlpatterns = [
     # path("django-admin/", admin.site.urls),
     # path('oidc/authenticate/', CustomOIDCLoginView.as_view(), name='oidc_authentication_init'),
     # path('oidc/callback/', CustomOIDCCallbackView.as_view(), name='oidc_callback'), 
+
+     path("admin/login/", wagtail_admin_redirect_to_oidc),
+    
+    # All other routes
+    path("admin/", include(wagtailadmin_urls)),
+
     path("oidc/callback/", CustomOIDCCallbackView.as_view(), name="oidc_callback"),
     path('admin/logout/', custom_admin_logout, name='wagtailadmin_logout'),  
-    path("admin/", include(wagtailadmin_urls)),
+    # path("admin/", include(wagtailadmin_urls)),
     path("logout/", custom_logout, name="custom_logout"),
     path('oidc/', include('mozilla_django_oidc.urls')), 
    
@@ -104,5 +112,9 @@ urlpatterns = urlpatterns + [
     # of your site, rather than the site root:
     #    path("pages/", include(wagtail_urls)),
 ]
+
+if settings.URL_PREFIX:
+    urlpatterns = [path(f'{settings.URL_PREFIX}/', include(urlpatterns))]
+
 
 
