@@ -16,13 +16,10 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
-# FORCE_SCRIPT_NAME = '/cms'
-STATIC_URL = '/static/'
-
 URL_PREFIX = 'cms'
+STATIC_URL = URL_PREFIX + '/static/'
 
-# STATIC_ROOT = BASE_DIR / "static_root"
-STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -39,7 +36,10 @@ AUTHENTICATION_BACKENDS = [
 # Application definition
 
 INSTALLED_APPS = [
-   
+    "health_check",                       # core
+    "health_check.db",                    # database check
+    "health_check.cache",                 # cache check
+    "health_check.storage",               # file storage
     "search",
     "wagtail.contrib.forms",
     "wagtail.contrib.redirects",

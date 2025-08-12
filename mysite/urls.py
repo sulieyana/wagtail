@@ -67,8 +67,9 @@ urlpatterns = [
     # path("django-admin/", admin.site.urls),
     # path('oidc/authenticate/', CustomOIDCLoginView.as_view(), name='oidc_authentication_init'),
     # path('oidc/callback/', CustomOIDCCallbackView.as_view(), name='oidc_callback'), 
-
-     path("admin/login/", wagtail_admin_redirect_to_oidc),
+    
+    path("health/", include("health_check.urls")),   # → /health/
+    path("admin/login/", wagtail_admin_redirect_to_oidc),
     
     # All other routes
     path("admin/", include(wagtailadmin_urls)),
@@ -95,14 +96,6 @@ urlpatterns += [
     path('api-docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
-if settings.DEBUG:
-    from django.conf.urls.static import static
-    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
-    # Serve static and media files from development server
-    urlpatterns += staticfiles_urlpatterns()
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
 urlpatterns = urlpatterns + [
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
@@ -115,6 +108,13 @@ urlpatterns = urlpatterns + [
 
 if settings.URL_PREFIX:
     urlpatterns = [path(f'{settings.URL_PREFIX}/', include(urlpatterns))]
+
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
+# Serve static and media files from development server
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
