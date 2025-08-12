@@ -1,2 +1,14 @@
+# Wagtail core
 Django>=5.2,<5.3
 wagtail>=7.0,<7.1
+
+# Health check
+django-health-check==3.18.2  # latest stable as of Aug 2025
+
+# Other dependencies
+python-dotenv>=1.0.0
+drf-yasg>=1.21.6
+django-cors-headers>=4.3.1
+mozilla-django-oidc>=2.0.0
+psycopg2-binary>=2.9.9
+PyJWT>=2.0.0
